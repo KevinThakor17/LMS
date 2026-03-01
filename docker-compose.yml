@@ -19,7 +19,7 @@ services:
     container_name: ems_backend
     restart: unless-stopped
     env_file:
-      - ./backend/.env
+      - ./.env
     depends_on:
       db:
         condition: service_healthy

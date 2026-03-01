@@ -3,7 +3,6 @@
 #backend
 __pycache__
 backend/venv/
-backend/.env
 backend/*.pyc
 backend/ems_local.db
 

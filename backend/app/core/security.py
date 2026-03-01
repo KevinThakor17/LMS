@@ -3,10 +3,13 @@ import hashlib
 import hmac
 import os
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from dotenv import load_dotenv
 from jose import JWTError, jwt
 
+ROOT_ENV_FILE = Path(__file__).resolve().parents[3] / ".env"
+load_dotenv(dotenv_path=ROOT_ENV_FILE)
 load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY", "change-me")
