@@ -1,0 +1,69 @@
+:root,
+[data-bs-theme="light"] {
+  --bs-body-bg: #f2f4f7;
+  --bs-body-color: #1f2937;
+  --bs-primary: #6b7280;
+  --bs-primary-rgb: 107, 114, 128;
+  --bs-secondary: #9ca3af;
+  --bs-border-color: #e5e7eb;
+}
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: #111827;
+  --bs-body-color: #e5e7eb;
+  --bs-primary: #9ca3af;
+  --bs-primary-rgb: 156, 163, 175;
+  --bs-secondary: #6b7280;
+  --bs-border-color: #374151;
+}
+
+body {
+  background: linear-gradient(180deg, #eef2f6 0%, var(--bs-body-bg) 24%);
+}
+
+[data-bs-theme="dark"] body {
+  background: linear-gradient(180deg, #1f2937 0%, var(--bs-body-bg) 26%);
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.icon-rail {
+  width: 80px;
+}
+
+.rail-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+}
+
+.rail-link.active,
+.rail-link:hover {
+  background-color: rgba(var(--bs-primary-rgb), 0.12);
+  color: var(--bs-primary);
+}
+
+.top-header {
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+[data-bs-theme="dark"] .top-header {
+  background: rgba(17, 24, 39, 0.8);
+}
+
+.metric-card {
+  min-height: 105px;
+}
+
+.soft-card {
+  background-color: rgba(var(--bs-primary-rgb), 0.06);
+}

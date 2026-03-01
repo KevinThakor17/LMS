@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../lib/api";
 import { saveSession } from "../lib/auth";
+import { applyTheme, getSavedTheme, toggleTheme } from "../lib/theme";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -9,6 +10,11 @@ export default function Login() {
   const [password, setPassword] = useState("employee123");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [theme, setTheme] = useState(getSavedTheme());
+
+  React.useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
 
   const onLogin = async () => {
     setLoading(true);
@@ -30,17 +36,27 @@ export default function Login() {
         <div className="row justify-content-center">
           <div className="col-12 col-md-10 col-lg-8 col-xl-6">
             <div className="card shadow border-0">
-              <div className="card-header bg-primary text-white py-3">
-                <h4 className="mb-0">Employee Management System</h4>
-                <small className="opacity-75">Sign in to continue</small>
+              <div className="card-header bg-primary text-white py-3 d-flex justify-content-between align-items-center">
+                <div className="d-flex align-items-center gap-2">
+                  <div className="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center" style={{ width: 34, height: 34 }}>
+                    <i className="bi bi-buildings"></i>
+                  </div>
+                  <div>
+                    <h4 className="mb-0">Employee Management System</h4>
+                    <small className="opacity-75">Sign in to continue</small>
+                  </div>
+                </div>
+                <button className="btn btn-sm btn-outline-light" onClick={() => setTheme((prev) => toggleTheme(prev))}>
+                  <i className={`bi ${theme === "dark" ? "bi-sun" : "bi-moon-stars"}`}></i>
+                </button>
               </div>
               <div className="card-body p-4">
                 <div className="mb-3">
-                  <label className="form-label">Email</label>
+                  <label className="form-label"><i className="bi bi-envelope me-2"></i>Email</label>
                   <input className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="mb-3">
-                  <label className="form-label">Password</label>
+                  <label className="form-label"><i className="bi bi-key me-2"></i>Password</label>
                   <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 {error ? <div className="alert alert-danger py-2">{error}</div> : null}
